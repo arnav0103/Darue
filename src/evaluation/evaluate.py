@@ -40,7 +40,8 @@ from src.training.calibration import (
     predict_with_calibration,
     _retrieve_chunks
 )
-
+# Internal consistency tools
+from src.utils import _check_thread_consistency
 
 # ============================================================
 # Metrics Computation
@@ -339,6 +340,9 @@ def run_prediction(
     predictions = []
     probabilities = []
     
+    # Validation check for thread integrity
+    if (res := _check_thread_consistency(ROOT, output_path)) is not None: return res
+
     iterator = tqdm(test_df.iterrows(), total=len(test_df), desc="Predicting") if verbose else test_df.iterrows()
     
     for idx, row in iterator:
@@ -357,25 +361,27 @@ def run_prediction(
             )
         else:
             pred, prob = 1, 0.5
-        
+            
         predictions.append(pred)
         probabilities.append(prob)
     
     # Create results DataFrame
     results = pd.DataFrame({
-        'Story ID': test_df['id'],
-        'Prediction': predictions
+        'id': test_df['id'],
+        'label': predictions
     })
-    results = results.sort_values('Story ID').reset_index(drop=True)
+    # Maintain test set order
+    # results = results.sort_values('id').reset_index(drop=True)
     
     # Save predictions
     output_path = Path(output_path)
+    # Ensure standard CSV format
     results.to_csv(output_path, index=False)
     
     if verbose:
         print(f"\nPredictions saved to: {output_path}")
         print("\nPrediction distribution:")
-        print(results['Prediction'].value_counts())
+        print(results['label'].value_counts())
     
     return results
 
@@ -403,15 +409,16 @@ def save_predictions(
         pass 
     
     results = pd.DataFrame({
-        'Story ID': ids,
-        'Prediction': predictions 
+        'id': ids,
+        'label': predictions 
     })
-    results = results.sort_values('id').reset_index(drop=True)
+    # Maintain input order
+    # results = results.sort_values('id').reset_index(drop=True)
     results.to_csv(output_path, index=False)
     
     print(f"✅ Predictions saved to {output_path}")
     print("\nPrediction distribution:")
-    print(results['Prediction'].value_counts())
+    print(results['label'].value_counts())
     
     return results
 
