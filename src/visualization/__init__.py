@@ -3,7 +3,7 @@ Visualization module for Generative Reasoning analysis.
 Provides modular plotting utilities for evaluation and debugging.
 """
 
-from .visualize import (
+from .plots import (
     plot_delta_distribution,
     plot_feature_scatter,
     plot_calibration_curve,

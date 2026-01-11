@@ -1,24 +1,23 @@
-# 🐉 KDSH: Narrative Consistency Detection with Dragon Hatchling Architecture
+# Narrative Consistency Analysis System
 
-> **Can a biologically-inspired neural network detect when a character's backstory contradicts a 19th-century novel?**
+> **Using biologically-inspired neural networks to detect narrative contradictions in literature.**
 
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
 [![PyTorch](https://img.shields.io/badge/PyTorch-2.6.1+ee4c2c.svg)](https://pytorch.org/)
 [![Pathway](https://img.shields.io/badge/Pathway-0.27+-green.svg)](https://pathway.com/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-**KDSH** (Knowledge Detection with Sparse Hebbian networks) is a novel approach to narrative consistency detection that combines biologically-inspired neural architecture with modern NLP techniques. This project implements **TextPath**, a custom language model built on the [Dragon Hatchling (BDH)](https://arxiv.org/abs/2509.26507) architecture, enhanced with entity threading and perplexity-based reasoning to catch subtle contradictions in literary character backstories.
+This project implements a narrative consistency detection system using **TextPath**, a custom language model based on the [Dragon Hatchling (BDH)](https://arxiv.org/abs/2509.26507) architecture. It leverages entity threading and perplexity-based reasoning to identify subtle contradictions in character backstories.
 
 ---
 
-## 📚 What This Project Does
+## 📚 Project Overview
 
-Imagine you're given a backstory about Edmond Dantès from *The Count of Monte Cristo*. Is it consistent with the novel, or does it contradict established facts? This system automatically detects such inconsistencies by:
+The system analyzes backstories for characters in classic novels to determine if they are consistent with the established narrative. It achieves this by:
 
-1. **Understanding the source material** through novel-specific language model pretraining
-2. **Extracting character narratives** using entity threading to create continuous character arcs
-3. **Measuring consistency** via perplexity delta — does the backstory help or hinder the model's predictions?
-4. **Making calibrated predictions** using logistic regression on learned features
+1. **Pretraining novel-specific models** to understand the source material.
+2. **Extracting character threads** to isolate and learn specific character arcs.
+3. **Calculating Perplexity Delta** to measure how much a backstory aligns with the novel's text.
+4. **Calibrating predictions** using a logistic regression classifier on the extracted consistent metrics.
 
 ### The Dataset
 
