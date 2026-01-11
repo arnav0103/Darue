@@ -1,29 +1,26 @@
-# Core dependencies for Narrative Consistency Auditor
-# Install with: pip install -r requirements.txt
-peft==0.17.1
-# Text processing
-tiktoken==0.8.0
+# KDSH 2026: Narrative Consistency Detection
+# Core dependencies for TextPath + Pathway pipeline
 
-# Embeddings and semantic search - stable compatible versions
-torch>=2.0.0
-transformers==4.49.0
-sentence-transformers==2.2.2
-faiss-cpu==1.8.0
-# For GPU support, replace faiss-cpu with: faiss-gpu==1.8.0
+# Deep Learning
+torch
 
-# LLM integration
-google-generativeai==0.8.3
+# Data Processing
+numpy
+pandas
+
+# Tokenization
+tokenizers
+
+# RAG Framework
+pathway
+sentence-transformers
 
 # Machine Learning
-scikit-learn==1.3.2
-numpy==1.26.4
-pandas==2.0.3
+scikit-learn
 
-# Environment management
-python-dotenv==1.0.1
+# Visualization
+matplotlib
+seaborn
 
-# Optional: Pathway for data orchestration
-# pathway==0.15.4
-
-# Progress bars and utilities
-tqdm==4.67.1
+# Progress Bars
+tqdm

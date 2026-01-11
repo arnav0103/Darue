@@ -1,0 +1,6 @@
+{
+  "retrieval_k": 1,
+  "chunk_size": 400,
+  "overlap": 100,
+  "max_novel_tokens": 512
+}
